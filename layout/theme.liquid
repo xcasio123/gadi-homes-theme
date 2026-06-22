@@ -27,11 +27,12 @@
       assign body_font_bold = body_font | font_modify: 'weight', 'bold'
       assign heading_font_bold = heading_font | font_modify: 'weight', 'bold'
     -%}
-
+  <style>
     {{ body_font | font_face: font_display: 'swap' }}
     {{ body_font_bold | font_face: font_display: 'swap' }}
     {{ heading_font | font_face: font_display: 'swap' }}
     {{ heading_font_bold | font_face: font_display: 'swap' }}
+    </style>
 
     <style>
       :root {
