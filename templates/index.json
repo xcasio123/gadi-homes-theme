@@ -1,8 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "image-banner",
       "settings": {
+        "image": "shopify://shop_images/Screenshot_2026-06-22_134929.png",
+        "link": "",
         "heading": "",
         "text": "",
         "button_label": "",
@@ -14,8 +25,8 @@
       "type": "featured-collection",
       "settings": {
         "heading": "Kitchen Essentials",
-        "subheading": "Cookware, storage, gadgets, tableware and more \u2014 find exactly what your kitchen is missing.",
-        "collection": "kitchen-dining",
+        "subheading": "Cookware, storage, gadgets, tableware and more — find exactly what your kitchen is missing.",
+        "collection": "automated-collection",
         "product_limit": 8,
         "layout": "grid",
         "show_view_all": true,
@@ -25,7 +36,7 @@
     "divider_1": {
       "type": "media-divider",
       "settings": {
-        "heading": "See exactly what you are ordering \u2014 before you order it",
+        "heading": "See exactly what you are ordering — before you order it",
         "text": ""
       }
     },
@@ -34,7 +45,7 @@
       "settings": {
         "heading": "Home Essentials",
         "subheading": "Laundry, storage, hooks, hangers and home essentials that make everyday life easier.",
-        "collection": "home-and-living",
+        "collection": "hydrogen",
         "product_limit": 8,
         "layout": "grid",
         "show_view_all": true,
@@ -46,7 +57,7 @@
       "settings": {
         "heading": "Bathroom Essentials",
         "subheading": "Bathroom accessories, storage solutions, soap dispensers and shower accessories for modern bathrooms.",
-        "collection": "bathroom-accessories",
+        "collection": "hydrogen",
         "product_limit": 8,
         "layout": "grid",
         "show_view_all": true,
@@ -57,8 +68,8 @@
       "type": "featured-collection",
       "settings": {
         "heading": "Cleaning Essentials",
-        "subheading": "Mops, brushes, cloths, gloves, sprays and more \u2014 everything you need to keep your home spotless.",
-        "collection": "cleaning-essentials",
+        "subheading": "Mops, brushes, cloths, gloves, sprays and more — everything you need to keep your home spotless.",
+        "collection": "automated-collection",
         "product_limit": 8,
         "layout": "grid",
         "show_view_all": true,
@@ -68,20 +79,55 @@
     "value_props": {
       "type": "value-props",
       "blocks": {
-        "b1": { "type": "item", "settings": { "icon": "truck", "title": "Nationwide Delivery", "text": "Fast shipping across the country" } },
-        "b2": { "type": "item", "settings": { "icon": "chat", "title": "Responsive Support", "text": "We answer your queries quickly" } },
-        "b3": { "type": "item", "settings": { "icon": "return", "title": "7-Day Easy Returns", "text": "Hassle-free returns" } },
-        "b4": { "type": "item", "settings": { "icon": "wallet", "title": "COD & Bank Transfer", "text": "Pay your way" } }
+        "b1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Nationwide Delivery",
+            "text": "Fast shipping across the country"
+          }
+        },
+        "b2": {
+          "type": "item",
+          "settings": {
+            "icon": "chat",
+            "title": "Responsive Support",
+            "text": "We answer your queries quickly"
+          }
+        },
+        "b3": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "7-Day Easy Returns",
+            "text": "Hassle-free returns"
+          }
+        },
+        "b4": {
+          "type": "item",
+          "settings": {
+            "icon": "wallet",
+            "title": "COD & Bank Transfer",
+            "text": "Pay your way"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
-      "settings": { "boxed": true }
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "boxed": false
+      }
     },
     "row_new": {
       "type": "featured-collection",
       "settings": {
         "heading": "Just Landed",
-        "subheading": "Fresh arrivals added to the collection \u2014 be the first to get them.",
-        "collection": "new-arrivals",
+        "subheading": "Fresh arrivals added to the collection — be the first to get them.",
+        "collection": "automated-collection",
         "product_limit": 8,
         "layout": "scroll",
         "show_view_all": true,
@@ -93,7 +139,7 @@
       "settings": {
         "heading": "Save More With Value Deals",
         "subheading": "Bundle your favorites and pay less. Value deals built so your whole home is covered.",
-        "collection": "bundles",
+        "collection": "automated-collection",
         "product_limit": 8,
         "layout": "grid",
         "show_view_all": true,
@@ -103,12 +149,49 @@
     "reviews": {
       "type": "reviews",
       "blocks": {
-        "r1": { "type": "review", "settings": { "stars": 5, "text": "Great quality and very useful. Smooth ordering and delivery.", "author": "Customer", "verified": true } },
-        "r2": { "type": "review", "settings": { "stars": 5, "text": "Very nice shopping experience. The quality is very good.", "author": "Customer", "verified": true } },
-        "r3": { "type": "review", "settings": { "stars": 5, "text": "On time delivery and safe packaging.", "author": "Customer", "verified": true } },
-        "r4": { "type": "review", "settings": { "stars": 5, "text": "Durable and good. Exactly as shown in the pictures.", "author": "Customer", "verified": true } }
+        "r1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Great quality and very useful. Smooth ordering and delivery.",
+            "author": "Customer",
+            "verified": true
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Very nice shopping experience. The quality is very good.",
+            "author": "Customer",
+            "verified": true
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "On time delivery and safe packaging.",
+            "author": "Customer",
+            "verified": true
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "text": "Durable and good. Exactly as shown in the pictures.",
+            "author": "Customer",
+            "verified": true
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
       "settings": {
         "heading": "What our customers say",
         "show_summary": true,
@@ -119,12 +202,45 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "q1": { "type": "qa", "settings": { "tab": 1, "question": "What kinds of products do you sell?", "answer": "<p>We carry a curated selection of home, kitchen, bathroom, cleaning and personal-care essentials \u2014 practical, durable products for everyday use.</p>" } },
-        "q2": { "type": "qa", "settings": { "tab": 1, "question": "How do I know the quality is good before I buy?", "answer": "<p>Every product is checked before it is listed, and product pages show verified reviews from real customers.</p>" } },
-        "q3": { "type": "qa", "settings": { "tab": 2, "question": "How long does delivery take?", "answer": "<p>Orders are typically delivered within a few working days. You will receive tracking once your order is dispatched.</p>" } },
-        "q4": { "type": "qa", "settings": { "tab": 3, "question": "How do I return or exchange a product?", "answer": "<p>Contact us within 7 days of receiving your order and we will guide you through an easy return process.</p>" } }
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "tab": 1,
+            "question": "What kinds of products do you sell?",
+            "answer": "<p>We carry a curated selection of home, kitchen, bathroom, cleaning and personal-care essentials — practical, durable products for everyday use.</p>"
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "tab": 1,
+            "question": "How do I know the quality is good before I buy?",
+            "answer": "<p>Every product is checked before it is listed, and product pages show verified reviews from real customers.</p>"
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "tab": 2,
+            "question": "How long does delivery take?",
+            "answer": "<p>Orders are typically delivered within a few working days. You will receive tracking once your order is dispatched.</p>"
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "tab": 3,
+            "question": "How do I return or exchange a product?",
+            "answer": "<p>Contact us within 7 days of receiving your order and we will guide you through an easy return process.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
       "settings": {
         "heading": "Frequently asked questions",
         "tabs": "General, Orders & Delivery, Returns"
