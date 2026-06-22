@@ -1,0 +1,13 @@
+<div class="section">
+  <div class="page-width" style="max-width:420px">
+    <div class="collection-header"><h1 class="collection-header__title">Activate account</h1></div>
+    <p style="color:var(--color-text-muted);font-size:.88rem">Create your password to activate your account.</p>
+    {%- form 'activate_customer_password' -%}
+      {{ form.errors | default_errors }}
+      <input type="password" name="customer[password]" placeholder="Password" style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-bottom:10px">
+      <input type="password" name="customer[password_confirmation]" placeholder="Confirm password" style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-bottom:10px">
+      <button type="submit" class="button button--full">Activate account</button>
+      <button type="submit" name="decline" class="cart-item__remove" style="margin-top:12px">Decline invitation</button>
+    {%- endform -%}
+  </div>
+</div>

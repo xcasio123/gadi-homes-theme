@@ -1,0 +1,154 @@
+{%- liquid
+  assign menu = section.settings.menu
+-%}
+
+<header class="header-wrapper">
+  <div class="header">
+    <div class="header__inner page-width">
+      {%- comment %} Mobile menu toggle {% endcomment -%}
+      <button type="button" class="header__menu-toggle" data-menu-toggle aria-label="{{ 'general.accessibility.menu' | t }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+
+      {%- comment %} Desktop nav {% endcomment -%}
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav__list">
+          {%- for link in menu.links -%}
+            {%- assign has_children = false -%}
+            {%- if link.links.size > 0 -%}{%- assign has_children = true -%}{%- endif -%}
+            <li class="nav__item{% if has_children %} nav__item--mega{% endif %}">
+              <a href="{{ link.url }}" class="nav__link">
+                {{ link.title }}
+                {%- if has_children -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                {%- endif -%}
+              </a>
+
+              {%- if has_children -%}
+                {%- assign deep = false -%}
+                {%- for child in link.links -%}
+                  {%- if child.links.size > 0 -%}{%- assign deep = true -%}{%- endif -%}
+                {%- endfor -%}
+                <div class="mega{% unless deep %} mega--small{% endunless %}">
+                  {%- for child in link.links -%}
+                    <div class="mega__col">
+                      {%- if child.links.size > 0 -%}
+                        <p class="mega__col-title">{{ child.title }}</p>
+                        {%- for grandchild in child.links -%}
+                          <a href="{{ grandchild.url }}" class="mega__link">{{ grandchild.title }}</a>
+                        {%- endfor -%}
+                      {%- else -%}
+                        <a href="{{ child.url }}" class="mega__link">{{ child.title }}</a>
+                      {%- endif -%}
+                    </div>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+
+      {%- comment %} Logo {% endcomment -%}
+      <div class="header__logo">
+        <a href="{{ routes.root_url }}">
+          {%- if section.settings.logo != blank -%}
+            {%- assign logo_w = section.settings.logo_width -%}
+            <img
+              src="{{ section.settings.logo | image_url: width: 380 }}"
+              alt="{{ shop.name | escape }}"
+              width="{{ logo_w }}"
+              style="max-width: {{ logo_w }}px"
+              loading="eager">
+          {%- else -%}
+            <span class="header__logo-text">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+      </div>
+
+      {%- comment %} Actions {% endcomment -%}
+      <div class="header__actions">
+        <button type="button" class="header__icon" data-search-open aria-label="{{ 'general.search.search' | t }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a href="{{ routes.account_url }}" class="header__icon" aria-label="{{ 'general.accessibility.account' | t }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </a>
+        <a href="{{ routes.cart_url }}" class="header__icon" data-cart-open aria-label="{{ 'general.accessibility.cart' | t }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count" data-cart-count {% if cart.item_count == 0 %}style="display:none"{% endif %}>{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+{%- comment %} Mobile nav drawer {% endcomment -%}
+<div class="drawer-overlay" id="MobileNavOverlay" data-menu-close></div>
+<aside class="drawer drawer--left" id="MobileNav" aria-label="Menu">
+  <div class="drawer__header">
+    <span class="drawer__title">{{ 'general.accessibility.menu' | t }}</span>
+    <button type="button" class="drawer__close" data-menu-close aria-label="{{ 'general.accessibility.close' | t }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="drawer__body">
+    <ul class="mobile-nav__list">
+      {%- for link in menu.links -%}
+        <li class="mobile-nav__item">
+          {%- if link.links.size > 0 -%}
+            <button type="button" class="mobile-nav__link" data-subnav-toggle>
+              {{ link.title }}
+              <span class="mobile-nav__toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div class="mobile-nav__sub">
+              {%- for child in link.links -%}
+                {%- if child.links.size > 0 -%}
+                  <p class="mega__col-title">{{ child.title }}</p>
+                  {%- for gc in child.links -%}
+                    <a href="{{ gc.url }}" class="mobile-nav__sublink">{{ gc.title }}</a>
+                  {%- endfor -%}
+                {%- else -%}
+                  <a href="{{ child.url }}" class="mobile-nav__sublink">{{ child.title }}</a>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- else -%}
+            <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</aside>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 80,
+      "max": 260,
+      "step": 10,
+      "unit": "px",
+      "default": 150
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

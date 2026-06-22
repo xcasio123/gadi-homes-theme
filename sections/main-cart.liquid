@@ -1,0 +1,58 @@
+<div class="section">
+  <div class="page-width">
+    <h1 class="collection-header__title text-center" style="margin-bottom:30px">{{ 'cart.general.title' | t }}</h1>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" style="max-width:900px;margin-inline:auto">
+        <div class="cart-items">
+          {%- for item in cart.items -%}
+            <div class="cart-item">
+              <a href="{{ item.url }}" class="cart-item__image">
+                {%- if item.image -%}
+                  <img src="{{ item.image | image_url: width: 128 }}" alt="{{ item.title | escape }}" width="64" height="64" loading="lazy">
+                {%- endif -%}
+              </a>
+              <div class="cart-item__details">
+                <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title }}</a>
+                {%- unless item.variant.title contains 'Default' -%}
+                  <div class="cart-item__variant">{{ item.variant.title }}</div>
+                {%- endunless -%}
+                <div class="qty">
+                  <button type="button" data-qty-btn="minus" aria-label="Decrease">&minus;</button>
+                  <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" data-line="{{ forloop.index }}" aria-label="{{ 'products.product.quantity' | t }}">
+                  <button type="button" data-qty-btn="plus" aria-label="Increase">+</button>
+                </div>
+                <a href="{{ item.url_to_remove }}" class="cart-item__remove">{{ 'cart.general.remove' | t }}</a>
+              </div>
+              <div class="cart-item__price">{{ item.final_line_price | money }}</div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="drawer__footer" style="border:0;padding-inline:0">
+          <div class="cart-subtotal">
+            <span>{{ 'cart.general.subtotal' | t }}</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          <p class="cart-note">{{ 'cart.general.taxes_note' | t }}</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button type="submit" name="update" class="button button--secondary">Update cart</button>
+            <button type="submit" name="checkout" class="button" style="flex:1">{{ 'cart.general.checkout' | t }}</button>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="cart-empty">
+        <p>{{ 'cart.general.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="button">{{ 'cart.general.continue_shopping' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}

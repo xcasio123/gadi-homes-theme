@@ -1,0 +1,226 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "WeHome",
+    "theme_version": "1.0.0",
+    "theme_author": "Custom Build",
+    "theme_documentation_url": "https://shopify.dev",
+    "theme_support_url": "https://shopify.dev"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#1c1c1c"
+      },
+      {
+        "type": "color",
+        "id": "color_text_muted",
+        "label": "Muted text",
+        "default": "#727272"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Surface / cards",
+        "default": "#f6f6f4"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Borders",
+        "default": "#e7e7e3"
+      },
+      {
+        "type": "header",
+        "content": "Accents"
+      },
+      {
+        "type": "color",
+        "id": "color_button",
+        "label": "Buttons",
+        "default": "#1c1c1c"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Button text",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_sale",
+        "label": "Sale / price highlight",
+        "default": "#c8202f"
+      },
+      {
+        "type": "color",
+        "id": "color_announcement_bg",
+        "label": "Announcement bar background",
+        "default": "#1c1c1c"
+      },
+      {
+        "type": "color",
+        "id": "color_announcement_text",
+        "label": "Announcement bar text",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading font",
+        "default": "poppins_n6"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "poppins_n4"
+      },
+      {
+        "type": "range",
+        "id": "font_heading_scale",
+        "label": "Heading scale",
+        "min": 90,
+        "max": 140,
+        "step": 5,
+        "unit": "%",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "font_body_size",
+        "label": "Base body size",
+        "min": 13,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "default": 15
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Page width",
+        "min": 1100,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "default": 1360
+      },
+      {
+        "type": "range",
+        "id": "section_spacing",
+        "label": "Spacing between sections",
+        "min": 24,
+        "max": 96,
+        "step": 4,
+        "unit": "px",
+        "default": 56
+      },
+      {
+        "type": "select",
+        "id": "card_corner",
+        "label": "Card corner radius",
+        "options": [
+          { "value": "0px", "label": "Square" },
+          { "value": "6px", "label": "Soft" },
+          { "value": "14px", "label": "Rounded" }
+        ],
+        "default": "6px"
+      }
+    ]
+  },
+  {
+    "name": "Product cards",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "card_show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_secondary_image",
+        "label": "Show second image on hover",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_quick_add",
+        "label": "Show quick add-to-cart button",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "card_image_ratio",
+        "label": "Image ratio",
+        "options": [
+          { "value": "square", "label": "Square (1:1)" },
+          { "value": "portrait", "label": "Portrait (3:4)" }
+        ],
+        "default": "square"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          { "value": "drawer", "label": "Slide-out drawer" },
+          { "value": "page", "label": "Page" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_free_shipping_bar",
+        "label": "Show free-shipping progress bar",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "cart_free_shipping_threshold",
+        "label": "Free-shipping threshold (in currency, e.g. 2500)",
+        "default": 2500
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "text", "id": "social_facebook", "label": "Facebook URL" },
+      { "type": "text", "id": "social_instagram", "label": "Instagram URL" },
+      { "type": "text", "id": "social_youtube", "label": "YouTube URL" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok URL" },
+      { "type": "text", "id": "social_whatsapp", "label": "WhatsApp number (with country code)" }
+    ]
+  }
+]

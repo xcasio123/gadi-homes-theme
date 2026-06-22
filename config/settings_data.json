@@ -1,0 +1,52 @@
+{
+  "current": {
+    "color_text": "#1c1c1c",
+    "color_text_muted": "#727272",
+    "color_background": "#ffffff",
+    "color_surface": "#f6f6f4",
+    "color_border": "#e7e7e3",
+    "color_button": "#1c1c1c",
+    "color_button_text": "#ffffff",
+    "color_sale": "#c8202f",
+    "color_announcement_bg": "#1c1c1c",
+    "color_announcement_text": "#ffffff",
+    "font_heading": "poppins_n6",
+    "font_body": "poppins_n4",
+    "font_heading_scale": 100,
+    "font_body_size": 15,
+    "page_width": 1360,
+    "section_spacing": 56,
+    "card_corner": "6px",
+    "card_show_vendor": false,
+    "card_show_secondary_image": true,
+    "card_show_quick_add": true,
+    "card_image_ratio": "square",
+    "cart_type": "drawer",
+    "cart_free_shipping_bar": true,
+    "cart_free_shipping_threshold": 2500,
+    "social_facebook": "",
+    "social_instagram": "",
+    "social_youtube": "",
+    "social_tiktok": "",
+    "social_whatsapp": ""
+  },
+  "presets": {
+    "WeHome": {
+      "color_text": "#1c1c1c",
+      "color_text_muted": "#727272",
+      "color_background": "#ffffff",
+      "color_surface": "#f6f6f4",
+      "color_border": "#e7e7e3",
+      "color_button": "#1c1c1c",
+      "color_button_text": "#ffffff",
+      "color_sale": "#c8202f",
+      "color_announcement_bg": "#1c1c1c",
+      "color_announcement_text": "#ffffff",
+      "font_heading": "poppins_n6",
+      "font_body": "poppins_n4",
+      "page_width": 1360,
+      "card_corner": "6px",
+      "cart_type": "drawer"
+    }
+  }
+}

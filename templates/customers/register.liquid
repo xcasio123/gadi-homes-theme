@@ -1,0 +1,14 @@
+<div class="section">
+  <div class="page-width" style="max-width:420px">
+    <div class="collection-header"><h1 class="collection-header__title">Create account</h1></div>
+    {%- form 'create_customer' -%}
+      {{ form.errors | default_errors }}
+      <input type="text" name="customer[first_name]" placeholder="First name" style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-bottom:10px">
+      <input type="text" name="customer[last_name]" placeholder="Last name" style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-bottom:10px">
+      <input type="email" name="customer[email]" placeholder="Email" required style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-bottom:10px">
+      <input type="password" name="customer[password]" placeholder="Password" required style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-bottom:10px">
+      <button type="submit" class="button button--full">Register</button>
+    {%- endform -%}
+    <p style="margin-top:16px;font-size:.88rem"><a href="{{ routes.account_login_url }}" class="link-underline">Already have an account? Log in</a></p>
+  </div>
+</div>

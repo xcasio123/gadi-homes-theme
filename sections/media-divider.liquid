@@ -1,0 +1,21 @@
+<div class="section media-divider">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2>{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p class="section-heading__subtitle">{{ section.settings.text }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Text divider",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "See exactly what you are ordering" },
+    { "type": "textarea", "id": "text", "label": "Text" }
+  ],
+  "presets": [{ "name": "Text divider" }]
+}
+{% endschema %}

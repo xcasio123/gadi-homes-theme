@@ -1,0 +1,32 @@
+<div class="section">
+  <div class="page-width" style="max-width:680px">
+    <div class="collection-header"><h1 class="collection-header__title">Your addresses</h1></div>
+    <p style="text-align:center"><a href="{{ routes.account_url }}" class="link-underline">Back to account</a></p>
+
+    {%- paginate customer.addresses by 10 -%}
+      <div style="margin:24px 0">
+        <h2 style="font-size:1.1rem">Add a new address</h2>
+        {%- form 'customer_address', customer.new_address -%}
+          {{ form.errors | default_errors }}
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <input type="text" name="address[first_name]" placeholder="First name" style="padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner)">
+            <input type="text" name="address[last_name]" placeholder="Last name" style="padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner)">
+          </div>
+          <input type="text" name="address[address1]" placeholder="Address" style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-top:10px">
+          <input type="text" name="address[city]" placeholder="City" style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-top:10px">
+          <input type="text" name="address[phone]" placeholder="Phone" style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-top:10px">
+          <button type="submit" class="button" style="margin-top:12px">Add address</button>
+        {%- endform -%}
+      </div>
+
+      {%- for address in customer.addresses -%}
+        <div style="border:1px solid var(--color-border);border-radius:var(--card-corner);padding:16px;margin-bottom:12px">
+          {{ address | format_address }}
+          <div style="margin-top:10px;font-size:.85rem">
+            <a href="{{ address.url }}" class="link-underline">Edit</a>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endpaginate -%}
+  </div>
+</div>

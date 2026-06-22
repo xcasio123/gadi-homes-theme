@@ -1,0 +1,26 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "msg": {
+          "type": "message",
+          "settings": {
+            "text": "Free shipping on orders over Rs. 2500"
+          }
+        }
+      },
+      "block_order": ["msg"]
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_width": 150,
+        "menu": "main-menu"
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

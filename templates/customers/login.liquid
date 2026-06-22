@@ -1,0 +1,32 @@
+<div class="section">
+  <div class="page-width" style="max-width:420px">
+    <div class="collection-header"><h1 class="collection-header__title">Login</h1></div>
+
+    <div id="recover" style="display:none">
+      <h2 style="font-size:1.1rem">Reset your password</h2>
+      <p style="color:var(--color-text-muted);font-size:.88rem">We will send you an email to reset your password.</p>
+      {%- form 'recover_customer_password' -%}
+        {{ form.errors | default_errors }}
+        {%- if form.posted_successfully? -%}
+          <p style="color:var(--color-sale)">We've sent you an email with a link to update your password.</p>
+        {%- endif -%}
+        <input type="email" name="email" placeholder="Email" required style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-bottom:10px">
+        <button type="submit" class="button button--full">Submit</button>
+        <button type="button" class="cart-item__remove" onclick="document.getElementById('recover').style.display='none';document.getElementById('login').style.display='block'" style="margin-top:12px">Cancel</button>
+      {%- endform -%}
+    </div>
+
+    <div id="login">
+      {%- form 'customer_login' -%}
+        {{ form.errors | default_errors }}
+        <input type="email" name="customer[email]" placeholder="Email" required style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-bottom:10px">
+        <input type="password" name="customer[password]" placeholder="Password" style="width:100%;padding:12px 14px;border:1px solid var(--color-border);border-radius:var(--card-corner);margin-bottom:10px">
+        <button type="submit" class="button button--full">Sign in</button>
+      {%- endform -%}
+      <p style="margin-top:16px;font-size:.88rem">
+        <button type="button" class="link-underline" onclick="document.getElementById('login').style.display='none';document.getElementById('recover').style.display='block'" style="background:none;border:0;padding:0">Forgot your password?</button>
+      </p>
+      <p style="font-size:.88rem"><a href="{{ routes.account_register_url }}" class="link-underline">Create an account</a></p>
+    </div>
+  </div>
+</div>

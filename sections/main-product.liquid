@@ -1,0 +1,128 @@
+{%- liquid
+  assign product = product
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+<div class="section">
+  <div class="page-width">
+    <div class="product" data-gallery>
+      {%- comment %} Media {% endcomment -%}
+      <div class="product__media">
+        <div class="product__media-main" data-gallery-main>
+          {%- if current_variant.featured_image -%}
+            {%- assign main_image = current_variant.featured_image -%}
+          {%- else -%}
+            {%- assign main_image = product.featured_image -%}
+          {%- endif -%}
+          {%- if main_image -%}
+            <img src="{{ main_image | image_url: width: 900 }}"
+                 alt="{{ main_image.alt | escape | default: product.title | escape }}"
+                 width="{{ main_image.width }}" height="{{ main_image.height }}"
+                 fetchpriority="high">
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+          {%- endif -%}
+        </div>
+        {%- if product.images.size > 1 -%}
+          <div class="product__thumbs">
+            {%- for image in product.images -%}
+              <button type="button" class="product__thumb{% if forloop.first %} is-active{% endif %}"
+                      data-gallery-thumb data-full="{{ image | image_url: width: 900 }}"
+                      aria-label="View image {{ forloop.index }}">
+                <img src="{{ image | image_url: width: 140 }}" alt="{{ image.alt | escape }}" width="70" height="70" loading="lazy">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment %} Info {% endcomment -%}
+      <div class="product__info">
+        {%- if product.vendor != blank and settings.card_show_vendor -%}
+          <div class="product-card__vendor">{{ product.vendor }}</div>
+        {%- endif -%}
+        <h1 class="product__title">{{ product.title }}</h1>
+
+        <div class="product__price" data-product-price>
+          {% render 'price', product: product, variant: current_variant %}
+        </div>
+
+        {%- form 'product', product, id: 'product-form', class: 'product-form', novalidate: 'novalidate', data-product-form: 'true' -%}
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="product-option" data-option-position="{{ option.position }}">
+                <span class="product-option__label">{{ option.name }}: <strong data-selected-{{ option.position }}>{{ option.selected_value }}</strong></span>
+                <div class="product-option__values">
+                  {%- for value in option.values -%}
+                    {%- assign opt_id = 'opt-' | append: option.position | append: '-' | append: forloop.index -%}
+                    <label class="product-option__value" for="{{ opt_id }}">
+                      <input type="radio" id="{{ opt_id }}"
+                             name="option-{{ option.position }}"
+                             value="{{ value | escape }}"
+                             data-option-input data-option-position="{{ option.position }}"
+                             {% if option.selected_value == value %}checked{% endif %}>
+                      {{ value }}
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          <select name="id" class="visually-hidden" data-variant-id>
+            {%- for variant in product.variants -%}
+              <option value="{{ variant.id }}" {% if variant == current_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                {{ variant.title }}
+              </option>
+            {%- endfor -%}
+          </select>
+
+          <div class="product__buy">
+            <div class="qty">
+              <button type="button" data-qty-btn="minus" aria-label="Decrease">&minus;</button>
+              <input type="number" name="quantity" value="1" min="1" aria-label="{{ 'products.product.quantity' | t }}">
+              <button type="button" data-qty-btn="plus" aria-label="Increase">+</button>
+            </div>
+            <button type="submit" name="add" class="button button--full"{% unless current_variant.available %} disabled{% endunless %}>
+              <span data-btn-text>{% if current_variant.available %}{{ 'products.product.add_to_cart' | t }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+            </button>
+          </div>
+
+          {{ form | payment_button }}
+
+          <script type="application/json" data-variant-json>
+            [
+              {%- for variant in product.variants -%}
+                {
+                  "id": {{ variant.id }},
+                  "options": {{ variant.options | json }},
+                  "price": {{ variant.price | json }},
+                  "available": {{ variant.available | json }},
+                  "price_html": {{ variant.price | money | json }}
+                }{% unless forloop.last %},{% endunless %}
+              {%- endfor -%}
+            ]
+          </script>
+        {%- endform -%}
+
+        {%- if product.description != blank -%}
+          <div class="product__description rte">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+
+        {%- if product.metafields.custom.shipping_note -%}
+          <p class="product-meta">{{ product.metafields.custom.shipping_note }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [],
+  "blocks": []
+}
+{% endschema %}

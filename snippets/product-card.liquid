@@ -1,0 +1,72 @@
+{%- liquid
+  assign ratio_class = ''
+  if settings.card_image_ratio == 'portrait'
+    assign ratio_class = ' product-card__media--portrait'
+  endif
+
+  assign second_image = product.images[1]
+  assign show_second = false
+  if settings.card_show_secondary_image and second_image
+    assign show_second = true
+  endif
+-%}
+
+<div class="product-card">
+  <a href="{{ product.url }}" class="product-card__media{{ ratio_class }}" aria-label="{{ product.title | escape }}">
+    {%- if product.featured_image -%}
+      <img
+        class="product-card__image product-card__image--primary"
+        src="{{ product.featured_image | image_url: width: 533 }}"
+        srcset="{{ product.featured_image | image_url: width: 320 }} 320w, {{ product.featured_image | image_url: width: 533 }} 533w, {{ product.featured_image | image_url: width: 720 }} 720w"
+        sizes="(max-width: 620px) 50vw, 25vw"
+        alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
+        width="{{ product.featured_image.width }}"
+        height="{{ product.featured_image.height }}"
+        loading="lazy">
+      {%- if show_second -%}
+        <img
+          class="product-card__image product-card__image--secondary"
+          src="{{ second_image | image_url: width: 533 }}"
+          sizes="(max-width: 620px) 50vw, 25vw"
+          alt="{{ second_image.alt | escape | default: product.title | escape }}"
+          width="{{ second_image.width }}"
+          height="{{ second_image.height }}"
+          loading="lazy">
+      {%- endif -%}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'product-card__image product-card__image--primary' }}
+    {%- endif -%}
+
+    <div class="product-card__badges">
+      {%- if product.compare_at_price > product.price and product.available -%}
+        <span class="badge">{{ 'products.product.sale' | t }}</span>
+      {%- endif -%}
+      {%- unless product.available -%}
+        <span class="badge badge--soldout">{{ 'products.product.sold_out' | t }}</span>
+      {%- endunless -%}
+    </div>
+  </a>
+
+  {%- if settings.card_show_quick_add and product.available -%}
+    <div class="product-card__quick">
+      {%- if product.variants.size > 1 -%}
+        <a href="{{ product.url }}" class="button button--small button--full">{{ 'products.product.choose_options' | t }}</a>
+      {%- else -%}
+        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button type="submit" class="button button--small button--full">{{ 'products.product.add_to_cart' | t }}</button>
+        </form>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="product-card__info">
+    {%- if settings.card_show_vendor and product.vendor != blank -%}
+      <div class="product-card__vendor">{{ product.vendor }}</div>
+    {%- endif -%}
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    {% render 'price', product: product %}
+  </div>
+</div>

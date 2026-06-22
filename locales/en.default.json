@@ -1,0 +1,88 @@
+{
+  "general": {
+    "search": {
+      "search": "Search",
+      "placeholder": "Search our store",
+      "results": "Search results",
+      "no_results": "No results found for \u201c{{ terms }}\u201d.",
+      "view_all": "View all"
+    },
+    "newsletter": {
+      "heading": "Newsletter",
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "button": "Subscribe",
+      "success": "Thanks for subscribing."
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "load_more": "Load more"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "tiktok": "TikTok",
+      "whatsapp": "WhatsApp"
+    },
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close": "Close",
+      "menu": "Menu",
+      "cart": "Cart",
+      "account": "Account",
+      "previous": "Previous slide",
+      "next": "Next slide"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "out_of_stock": "Out of stock",
+      "unavailable": "Unavailable",
+      "choose_options": "Choose options",
+      "quick_add": "Quick add",
+      "sale": "Sale",
+      "from_price": "From {{ price }}",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "quantity": "Quantity",
+      "description": "Description",
+      "view_full_details": "View full details",
+      "vendor": "Vendor"
+    },
+    "facets": {
+      "filter": "Filter",
+      "sort_by": "Sort by",
+      "clear": "Clear",
+      "apply": "Apply",
+      "results": "{{ count }} products"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Return to shop",
+      "subtotal": "Subtotal",
+      "checkout": "Check out",
+      "remove": "Remove",
+      "taxes_note": "Taxes and shipping calculated at checkout.",
+      "free_shipping_progress": "Spend {{ amount }} more for free shipping",
+      "free_shipping_reached": "You\u2019ve unlocked free shipping."
+    }
+  },
+  "templates": {
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you were looking for doesn\u2019t exist.",
+      "back": "Continue shopping"
+    },
+    "search": {
+      "title": "Search",
+      "no_results": "No results for \u201c{{ terms }}\u201d. Try another search."
+    }
+  }
+}

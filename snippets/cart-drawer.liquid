@@ -1,0 +1,13 @@
+{% comment %} Rendered globally; contents re-fetched via section cart-drawer on update {% endcomment %}
+<div class="drawer-overlay" id="CartOverlay" data-cart-close></div>
+<aside class="drawer drawer--wide" id="CartDrawer" aria-label="{{ 'cart.general.title' | t }}" aria-modal="true" role="dialog">
+  <div class="drawer__header">
+    <h2 class="drawer__title">{{ 'cart.general.title' | t }}</h2>
+    <button type="button" class="drawer__close" data-cart-close aria-label="{{ 'general.accessibility.close' | t }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="CartDrawerContents">
+    {% render 'cart-drawer-contents' %}
+  </div>
+</aside>

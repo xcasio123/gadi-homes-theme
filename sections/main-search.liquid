@@ -1,0 +1,56 @@
+<div class="section">
+  <div class="page-width">
+    <div class="collection-header">
+      <h1 class="collection-header__title">{{ 'templates.search.title' | t }}</h1>
+    </div>
+
+    <form action="{{ routes.search_url }}" method="get" class="search-modal__form" role="search" style="max-width:640px;margin:0 auto 36px">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.search' | t }}">
+      <button type="submit" class="button">{{ 'general.search.search' | t }}</button>
+    </form>
+
+    {%- if search.performed -%}
+      {%- if search.results.size > 0 -%}
+        <p class="text-center" style="margin-bottom:24px;color:var(--color-text-muted)">{{ search.results_count }} results for &ldquo;{{ search.terms }}&rdquo;</p>
+        {%- paginate search.results by 24 -%}
+          <div class="product-grid">
+            {%- for item in search.results -%}
+              {%- if item.object_type == 'product' -%}
+                {% render 'product-card', product: item %}
+              {%- else -%}
+                <div class="product-card">
+                  <a href="{{ item.url }}" class="product-card__info" style="padding:0">
+                    <h3 class="product-card__title">{{ item.title }}</h3>
+                  </a>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            <nav class="pagination" aria-label="Pagination">
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}">{{ part.title }}</a>
+                {%- elsif part.title == paginate.current_page -%}
+                  <span aria-current="page">{{ part.title }}</span>
+                {%- else -%}
+                  <span>{{ part.title }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+            </nav>
+          {%- endif -%}
+        {%- endpaginate -%}
+      {%- else -%}
+        <p class="text-center">{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,37 @@
+<div class="section">
+  <div class="page-width" style="max-width:820px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:24px">
+      <h1 style="margin:0">My account</h1>
+      <div style="display:flex;gap:14px;font-size:.88rem">
+        <a href="{{ routes.account_addresses_url }}" class="link-underline">Addresses</a>
+        <a href="{{ routes.account_logout_url }}" class="link-underline">Log out</a>
+      </div>
+    </div>
+    <p style="color:var(--color-text-muted)">Welcome{% if customer.first_name %}, {{ customer.first_name }}{% endif %}.</p>
+
+    <h2 style="font-size:1.2rem;margin-top:24px">Order history</h2>
+    {%- paginate customer.orders by 20 -%}
+      {%- if customer.orders.size > 0 -%}
+        <table style="width:100%;border-collapse:collapse;font-size:.88rem">
+          <thead>
+            <tr style="text-align:left;border-bottom:1px solid var(--color-border)">
+              <th style="padding:10px 8px">Order</th><th style="padding:10px 8px">Date</th><th style="padding:10px 8px">Total</th><th style="padding:10px 8px">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for order in customer.orders -%}
+              <tr style="border-bottom:1px solid var(--color-border)">
+                <td style="padding:10px 8px"><a href="{{ order.customer_url }}" class="link-underline">{{ order.name }}</a></td>
+                <td style="padding:10px 8px">{{ order.created_at | date: '%b %d, %Y' }}</td>
+                <td style="padding:10px 8px">{{ order.total_price | money }}</td>
+                <td style="padding:10px 8px">{{ order.financial_status_label }}</td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      {%- else -%}
+        <p style="color:var(--color-text-muted)">You haven't placed any orders yet.</p>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</div>

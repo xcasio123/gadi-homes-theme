@@ -1,0 +1,40 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "brand": {
+          "type": "brand",
+          "settings": {
+            "tagline": "Smart solutions that make every corner of your home easier, cleaner, and more efficient."
+          }
+        },
+        "quick_links": {
+          "type": "menu",
+          "settings": {
+            "title": "Quick links",
+            "menu": "footer"
+          }
+        },
+        "categories": {
+          "type": "menu",
+          "settings": {
+            "title": "Shop by category",
+            "menu": "footer"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Newsletter",
+            "text": "Subscribe to our newsletter and get special discounts."
+          }
+        }
+      },
+      "block_order": ["brand", "quick_links", "categories", "newsletter"]
+    }
+  },
+  "order": ["footer"]
+}
